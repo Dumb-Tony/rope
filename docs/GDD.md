@@ -1,6 +1,6 @@
 # Rope — first-pass GDD
 
-Status: design hypothesis, prototype first. Source: Game Ideas Planning (conversation 6aa70669-0724-83ea-8d1a-5398e0350b84), continued 14 September 2026. Controls below are proposed prototype mappings, not locked design decisions.
+Status: first playable prototype implemented and automatically tested, 14 September 2026. Human feel and external playtesting pending. Source: Game Ideas Planning (conversation 6aa70669-0724-83ea-8d1a-5398e0350b84).
 
 ## Fantasy and identity
 Here is a problem. Here is some rope. Figure it out.
@@ -14,7 +14,7 @@ Tiny control set. Physical mastery rather than stat upgrades. Readable cause and
 Observe the situation, act with the core tool/body, read the physical response, correct or recover, complete the objective, and retry for a cleaner approach. Restart is always a deliberate option, never the default consequence of a small mistake.
 
 ## Proposed controls
-Pointer selects an endpoint or anchor; click attach/detach, A/D move or pull, W/S adjust available rope length, Space release; R explicitly restarts. Show context cues; avoid a menu of tools.
+Pointer drags the hand end or the counterweight. W/S reels or feeds rope. 1/2 selects the far endpoint; 3/4/5 selects direct or either marked guide. Space detaches/reattaches the crate; P pauses; R resets. The toolbar duplicates configuration controls. A/D movement was omitted because this slice has no avatar.
 
 ## First standalone HTML vertical slice
 One side-view test yard: get a crate onto a raised platform, with two anchor points, a movable counterweight, and one rope. Support at least two plausible approaches, such as dragging by a ramp and redirecting a suspended load.
@@ -30,7 +30,12 @@ The crate must settle on the destination for a short dwell time. Verify pulling 
 First 30 seconds: tug an object and see tension. Ten hours: read forces and exploit geometry. Long-term hypothesis: different masses, anchors, and rope behaviors support player-authored solutions.
 
 ## Beyond the prototype
-Introduce a pulley only after basic force transmission feels good. Rope materials change elasticity, weight, and strength instead of becoming numerical upgrades. Later challenges: lower a piano, recover a truck, cross a gap. Defer vehicles, knot simulation, and community tooling.
+The first slice now includes ideal frictionless marked guides to test redirection. This moves simplified pulley behavior earlier than planned, without simulating wheels or wrapping. Further pulley complexity waits for human feedback on basic force transmission. Rope materials may later change elasticity, weight, and strength instead of becoming numerical upgrades. Later challenges: lower a piano, recover a truck, cross a gap. Defer vehicles, knot simulation, and community tooling.
+
+## Implemented physics boundary
+Fixed 120 Hz simulation, 50 ms maximum catch-up. The 4 kg crate and 8 kg counterweight are translating squares with inverse-mass collision response, gravity, damping and a sampled ramp surface. The hand end is a light physical body controlled by a bounded spring, not a teleporting cursor. Detaching does not overwrite velocity. The objective requires the entire crate within the destination, low speed, platform contact and 1.5 seconds of dwell.
+
+The force solver constrains the total routed cable length with tension-only position and velocity corrections. Visible rope spans each have 24 gravity-driven constrained segments. These segments visualize sag separately from the endpoint solver; distributed rope inertia is not implemented. Segment sag is updated at render cadence, so its appearance is frame-rate dependent, while body simulation is fixed-step. Rope does not collide with terrain or objects. Reconfiguration, powered reeling and dragging can inject energy. These reductions must remain explicit in playtester materials.
 
 ## Main risk
 Constraint instability, fake force transmission, and a single scripted solution are the biggest risks. Keep the scene small and expose enough motion to understand why an attempt failed.

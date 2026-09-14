@@ -4,6 +4,7 @@
 Own Git repository, focused GDD, standalone browser entry point plan, playtest log, and sharing guide.
 
 ## M1 — playable core slice
+Implemented 14 September 2026. Automated validation passed; see PLAYTEST.md. Human feel feedback is the next gate. The rope is a hybrid total-length force solver plus segmented sag visualization, not a full distributed-mass rope simulation.
 1. Create index.html with embedded styles, code, controls, pause, and restart.
 2. Implement the smallest readable scene: One side-view test yard: get a crate onto a raised platform, with two anchor points, a movable counterweight, and one rope. Support at least two plausible approaches, such as dragging by a ramp and redirecting a suspended load.
 3. Implement consistent physical response: A visible segmented constrained rope with slack, tension, gravity, and endpoint attachment. Objects have mass and collide with terrain. Limit anchors to marked points initially. Explicitly defer arbitrary knots and robust wrapping; never imply they work if they do not.
