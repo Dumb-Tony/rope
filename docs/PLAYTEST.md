@@ -19,6 +19,8 @@ Environment: Windows, Node 24.19.0 for deterministic physics tests; headless Mic
 - Desktop and narrow screenshots inspected. Labels, destination, controls and objective were visible. Small yard labels become tiny on phones; desktop remains the target.
 
 ### Findings and limits
+Public verification: GitHub Pages deployment of gameplay commit `57f0a72` succeeded. Repeated the browser suite against https://dumb-tony.github.io/rope/ on 14 September 2026: actual pointer ramp delivery, overhead/recovery replays, pause/reset, narrow layout, blur pause and zero JavaScript page errors all passed. The initial restricted-network attempt was denied by the environment; the authorized network run passed.
+
 Two approaches are demonstrated, including an airborne release, but both use externally powered hand/reel input. The 8 kg counterweight transfers force; it has not passed a full delivery on its own. This is evidence for a playable force-routing experiment, not evidence of a balanced physical puzzle.
 
 The cable is a tension-only total-length solver. Its segmented constrained sag visualization is not a distributed-mass force simulation. There is no rope/scenery collision, wrapping, knots, body rotation, or energy conservation when changing setups. Terrain uses center-sampled ramp contact, so box corners may intersect the incline. Guide A configuration is included in stability checks, but no full Guide A delivery route is claimed. Only Edge was tested; Firefox, Safari and mobile touch feel remain untested.

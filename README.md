@@ -5,6 +5,8 @@ Independent browser game prototype exploring Creative force routing and open-end
 ## Play
 [Play Rope](https://dumb-tony.github.io/rope/)
 
+Public deployment verified on 14 September 2026, including browser delivery and recovery tests. Gameplay baseline: `57f0a72`. [Source repository](https://github.com/Dumb-Tony/rope).
+
 First playable test yard: deliver the 4 kg crate to the gold destination and let it settle for 1.5 seconds. Two automated success routes are demonstrated: direct ramp pulling and an overhead lift followed by release. No score, upgrades, or required solution sequence.
 
 You can also open `index.html` directly in a desktop browser. It contains all code and artwork, needs no installation, and makes no network requests.
